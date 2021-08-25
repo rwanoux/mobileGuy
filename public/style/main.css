@@ -1,0 +1,74 @@
+/*-----------------
+font
+-------------------*/
+
+@font-face {
+    font-family: "roboto";
+    src: url("/fonts/roboto-light.ttf") format("ttf")
+}
+
+@font-face {
+    font-family: "secular";
+    src: url("/fonts/secularOne-Regular.ttf") format("ttf")
+}
+
+body {
+    font-family: roboto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: secular
+}
+
+
+/*-----------------
+Background
+-------------------*/
+
+.bg-prune {
+    background-color: #532B2B
+}
+
+.bg-orange {
+    background-color: #f14d25;
+}
+
+.bg-beige {
+    background-color: #f3d9b0;
+}
+
+.bg-cyan1 {
+    background-color: #0e918c;
+}
+
+.bg-cyan2 {
+    background-color: #117170;
+}
+
+
+/*-----------------
+text
+-------------------*/
+
+.txt-prune {
+    color: #532B2B
+}
+
+.txt-orange {
+    color: #f14d25;
+}
+
+.txt-beige {
+    color: #f3d9b0;
+}
+
+.txt-cyan1 {
+    color: #0e918c;
+}
+
+.txt-cyan2 {
+    color: #117170;
+}
