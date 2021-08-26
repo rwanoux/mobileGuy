@@ -1,52 +1,37 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    mobile guy
-                    
-                
-            
-        
-    
+	mobile guy
 {% endblock %}
 {% block body %}
-    <!--bandeau publicitaire-->
-    <div class="grix my-4">
-        <img src="http://lorempixel.com/1200/300/technics/PUB" alt="pub" class="responsive-media"></div>
-    </div>
+	<!--bandeau publicitaire-->
 
-    <!-- new-->
-    <h2 class="txt-center bg-cyan1 txt-prune">
-        nos nouveautés
-                            
-                    
-            
-    </h2>
-    <div class="grix xs3 md4 lg5">
+	<img src="http://lorempixel.com/1200/300/technics/PUB" alt="pub" class="responsive-media"></div>
 
-        {% for product in products %}
-            <div class="card light-1 shadow-1 bg-cyan2">
-                <div class="card-header">
-                    <h2>
-                        {{ product.designation }}
-                    </h2>
-                    <h4>
-                        {{ product.marque }}
-                    </h4>
-                </div>
-                <div class="divider"></div>
-                <div class="card-content">
-                <p>{{product.description}}</p></div>
-                <div class="card-footer">
-                    <button class="btn circle blue press">
-                       <a href="{{path('products_show', {'id':product.id})}}"> <i class="fas fa-search"></i></a>
-                    </button>
-                </div>
 
-            </div>
-        {% endfor %}
-    </div>
-    {% for role in app.user.roles %}
-        <p>
-            {{ role }}
-        </p>
-    {% endfor %}
-{% endblock %}
+<!-- new Products-->
+<h2 class="txt-center bg-cyan1 txt-prune">
+	nos nouveautés
+</h2>
+<div class="caroulix p-5" id="caroulixNew" data-ax="caroulix" data-ax-caroulix-autoplay-enabled="true" data-caroulix-indicators-enabled="true">
+	<div class="caroulix-arrow caroulix-prev">
+		<i class="fas fa-chevron-left"></i>
+	</div>
+	<div class="caroulix-arrow caroulix-next">
+		<i class="fas fa-chevron-right"></i>
+	</div>
+	{% for i in 0..products|length %}
+		{% if i is divisible by(5) %}
+			<div class="grix xs5  caroulix-item">
+				{% for z in i..i+4 %}
+					{% if z<products|length %}
+						{% include 'products/card.html.twig' with {'product':products[z]} %}
+
+
+					{% endif %}
+
+				{% endfor %}
+
+			</div>
+		{% endif %}
+	{% endfor %}
+</div>{% endblock %}

@@ -22,22 +22,20 @@ class ProductsRepository extends ServiceEntityRepository
     /**
      * @return Products[] Returns an array of Products objects
      */
-   
+
     public function findNew()
     {
-        $maxDate=date('Y-m-d', strtotime('-10 month'));
-        var_dump($maxDate);
+        $maxDate = date('Y-m-d', strtotime('-10 month'));
 
         return $this->createQueryBuilder('p')
             ->andWhere('p.dateSortie > :val')
             ->setParameter('val', $maxDate)
             ->orderBy('p.dateSortie', 'DESC')
-            ->setMaxResults(10)
+            ->setMaxResults(16)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    
+
 
     /*
     public function findOneBySomeField($value): ?Products

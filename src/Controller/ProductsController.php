@@ -8,6 +8,7 @@ use App\Repository\ProductsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -51,10 +52,12 @@ class ProductsController extends AbstractController
     /**
      * @Route("/{id}", name="products_show", methods={"GET"})
      */
-    public function show(Products $product): Response
+    public function show(Products $product, SessionInterface $session): Response
     {
         return $this->render('products/show.html.twig', [
             'product' => $product,
+            'qttPanier' => $session->get('qttPanier')
+
         ]);
     }
 
@@ -83,7 +86,7 @@ class ProductsController extends AbstractController
      */
     public function delete(Request $request, Products $product): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
             $entityManager->flush();

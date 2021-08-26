@@ -1,26 +1,32 @@
 /*-----------------
 font
--------------------*/
+-------------------
+*/
 
 @font-face {
     font-family: "roboto";
-    src: url("/fonts/roboto-light.ttf") format("ttf")
+    src: url("../fonts/roboto-light.ttf") format("ttf")
 }
 
 @font-face {
     font-family: "secular";
-    src: url("/fonts/secularOne-Regular.ttf") format("ttf")
+    src: url("../fonts/secularOne-Regular.ttf") format("ttf")
 }
 
 body {
-    font-family: roboto;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1,
 h2,
 h3,
 h4 {
-    font-family: secular
+    font-family: 'Secular One', sans-serif;
+}
+
+h1,
+h2 {
+    text-transform: uppercase;
 }
 
 
@@ -71,4 +77,11 @@ text
 
 .txt-cyan2 {
     color: #117170;
+}
+
+#qttPanier {
+    transform: scale(0.5) rotateZ(-10deg);
+    position: relative;
+    top: 10px;
+    left: -20px;
 }

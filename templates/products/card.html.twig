@@ -1,0 +1,59 @@
+<div class="card   m-2 light-1 shadow-4 hoverable-1 bg-cyan2 rounded-4">
+	<div class="card-header bg-orange">
+		<h4>
+			{{  product.marque }}
+		</h4>
+		<h2>
+			{{  product.designation }}
+		</h2>
+
+
+	</div>
+	<div class="divider"></div>
+	<img class=" p-2 rounded-2 responsive-media" width="256" src="{{ product.img }}" alt=""/>
+	<div class="divider"></div>
+
+	<div class="card-content txt-center">
+		<h5>
+			{{  product.prix }}€
+		</h5>
+
+		<p>sorti le :
+			{{ product.dateSortie|date("m/d/Y")}}</p>
+		{% if  product.stock < 50 %}
+			<h5 class="txt-red dark-2">
+				stock disponible :
+				{{  product.stock }}
+			</h5>
+			<h4 class="txt-red dark-2">
+				fin de stock
+			</h4>
+		{% elseif  product.stock < 100 %}
+			<h5 class="txt-orange">
+				stock disponible :{{  product.stock }}
+			</h5>
+
+
+		{% else %}
+			<h5>
+				stock disponible :
+				{{  product.stock }}
+			</h5>
+		{% endif %}
+	</div>
+	<div class="card-footer txt-center">
+		<button class="btn  bg-beige press my-3" title="">
+			<a href="{{ path('products_show', {'id': product.id}) }}">
+				<i class="fas fa-search"></i>
+				en savoir plus
+			</a>
+		</button>
+		<button class="btn  bg-beige press" title="">
+			<a href="{{ path('cart_add', {'id': product.id}) }}">
+				<i class="fa fa-cart-plus" aria-hidden="true"></i>
+				ajouter au panier
+			</a>
+		</button>
+	</div>
+
+</div>

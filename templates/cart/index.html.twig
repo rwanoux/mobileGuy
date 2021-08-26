@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}votre panier!
+{% endblock %}
+
+{% block body %}
+	<h1>votre panier</h1>
+	<table class="txt-center table">
+		<tr>
+			<th>produit</th>
+			<th>prix</th>
+			<th>qtt</th>
+			<th>total</th>
+			<th></th>
+		</tr>
+		{% for line in content %}
+			<tr class="bordred">
+				<td>
+					{{line.product.designation}}
+				</td>
+				<td>
+					{{line.product.prix}}
+				</td>
+				<td>
+					{{line.qtt}}
+				</td>
+				<td>
+					{{line.product.prix * line.qtt}}
+				</td>
+				<td>
+					<button class="btn">
+						<a href="{{path('cart_remove', {'id':line.product.id} ) }}">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+					</button>
+
+				</td>
+			</tr>
+		{% endfor %}
+		<tr class="txt-red">
+			<td colspan="3" class="txt-right">TOTAL</td>
+			<td>{{totalPrix}}</td>
+			<td></td>
+		</tr>
+	</table>
+	<div class="d-flex row">
+		<div class="self-center">
+			<button class="btn bg-cyan1 self-center">
+				valider la commande
+			</button>
+		</div>
+	</div>
+{% endblock %}

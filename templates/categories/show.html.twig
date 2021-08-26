@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{category.name}}
+{% endblock %}
+
+{% block body %}
+	<h1>Categorie /
+		{{category.name}}</h1>
+	<div class="grix xs2 md4">
+		{% for product in category.products %}
+
+			{% include 'products/card.html.twig' with {'product':product} %}
+
+		{% endfor %}
+	</div>
+{% endblock %}
