@@ -8,6 +8,9 @@
 
 	{{ form_start(registrationForm) }}
 	{{ form_row(registrationForm.email,{'attr':{'class':"form-field"}}) }}
+	{{ form_row(registrationForm.prenom,{'attr':{'class':"form-field"}}) }}
+	{{ form_row(registrationForm.nom,{'attr':{'class':"form-field"}}) }}
+	{{ form_row(registrationForm.adresse,{'attr':{'class':"form-field"}}) }}
 	{{ form_row(registrationForm.plainPassword,{
             label: 'Password',
             'attr':{'class':"form-field"},
