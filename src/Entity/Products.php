@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
+use App\Repository\ProductsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ORM\Entity(repositoryClass=ProductsRepository::class)
  */
 class Products
 {
@@ -63,11 +63,7 @@ class Products
      */
     private $categorie;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="content")
-     */
-    private $commande;
-
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -181,15 +177,4 @@ class Products
         return $this;
     }
 
-    public function getCommande(): ?Commande
-    {
-        return $this->commande;
-    }
-
-    public function setCommande(?Commande $commande): self
-    {
-        $this->commande = $commande;
-
-        return $this;
-    }
 }

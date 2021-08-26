@@ -63,7 +63,6 @@ class Commande
     {
         if (!$this->content->contains($content)) {
             $this->content[] = $content;
-            $content->setCommande($this);
         }
 
         return $this;
@@ -73,9 +72,7 @@ class Commande
     {
         if ($this->content->removeElement($content)) {
             // set the owning side to null (unless already changed)
-            if ($content->getCommande() === $this) {
-                $content->setCommande(null);
-            }
+            
         }
 
         return $this;

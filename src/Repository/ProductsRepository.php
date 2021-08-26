@@ -19,22 +19,25 @@ class ProductsRepository extends ServiceEntityRepository
         parent::__construct($registry, Products::class);
     }
 
-    // /**
-    //  * @return Products[] Returns an array of Products objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Products[] Returns an array of Products objects
+     */
+   
+    public function findNew()
     {
+        $maxDate=date('Y-m-d', strtotime('-10 month'));
+        var_dump($maxDate);
+
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
+            ->andWhere('p.dateSortie > :val')
+            ->setParameter('val', $maxDate)
+            ->orderBy('p.dateSortie', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Products

@@ -1,55 +1,97 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    {# Run `composer require symfony/webpack-encore-bundle` and uncomment the following Encore helpers to start using Symfony UX #}
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
-    <link rel="stylesheet" href="/style/axentix.css"> 
-    <link rel="stylesheet" href="/style/main.css"> 
-    {% block stylesheets %} {#{{ encore_entry_link_tags('app') }}#} {% endblock %} {% block javascripts %} {#{{ encore_entry_script_tags('app') }}#} {% endblock %}
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+                Welcome!
+                            
+            {% endblock %}
+        </title>
+        {# Run `composer require symfony/webpack-encore-bundle` and uncomment the following Encore helpers to start using Symfony UX #}
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
+        <link rel="stylesheet" href="/style/axentix.css">
+        <link rel="stylesheet" href="/style/main.css">
+        {% block stylesheets %}{#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+        {% block javascripts %}{#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
 
-<body axentix class="bg-beige">
+    <body axentix class="bg-beige">
+        <!-- header-->
+        <header>
+            <nav class="navbar shadow-1 bg-prune txt-beige">
 
+                <button class="sidenav-trigger btn shadow-1 circle bg-prune txt-beige m-5" data-target="sidenav">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+                <a href="/" class="navbar-logo centered">
+                    <img src="/img/logoDark.webp" alt="Xelzs" />
+                </a>
+                <div class="navbar-menu ml-auto">
+                    <a class="navbar-link " href="#">
+                        smartphones
+                                        
+                    </a>
+                    <a class="navbar-link" href="#">
+                        accessoires
+                                        
+                    </a>
+                    {% if app.user %}
+                        <a class="navbar-link" href="#">
+                            panier
+                                                
+                        </a>
+                        <a class="navbar-link" href="#">
+                            compte
+                                                
+                        </a>
+                        {% else %}
 
-<nav class="navbar shadow-1 bg-prune txt-beige">
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+        
+        <!-- sidenav vertical-->
 
-      <button class="sidenav-trigger btn shadow-1 circle bg-prune txt-beige m-5" data-target="sidenav">
-          <i class="fa fa-bars" aria-hidden="true"></i>
-          </button>
-    <a href="#" class="navbar-logo centered">
-     <img src="img/logoDark.webp" alt="Xelzs" />
-   </a>  <div class="navbar-menu ml-auto">
-    <a class="navbar-link " href="#">smartphones</a>
-    <a class="navbar-link" href="#">accessoires</a>
-    {% if app.user %}
-    <a class="navbar-link" href="#">panier</a>
-    <a class="navbar-link" href="#">compte</a>
-{% else %}
-    
-    {% endif %}
-  </div>
-</nav>
+        <aside class="sidenav shadow-1 bg-prune txt-beige" id="sidenav" data-ax="sidenav">
+            <div class="sidenav-header">
+                <button data-target="sidenav" class="sidenav-trigger">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img class="sidenav-logo dropshadow-1" src="img/logoDark.webp" alt="Logo" />
+            </div>
+            <a href="#" class="sidenav-link ">
+                Link 1
+                            
+            </a>
+            <a href="#" class="sidenav-link">
+                Link 2
+                            
+            </a>
+            <a href="#" class="sidenav-link">
+                Link 3
+                            
+            </a>
+            <a href="#" class="sidenav-link">
+                Link 4
+                            
+            </a>
+            <div class="sidenav-footer cyan light-1">
+                This is a footer
+                                        
+                            
+            </div>
+        </aside>
 
-    <div class="sidenav shadow-1 bg-prune txt-beige" id="sidenav" data-ax="sidenav">
-        <div class="sidenav-header">
-            <button data-target="sidenav" class="sidenav-trigger"><i class="fas fa-times"></i></button>
-            <img class="sidenav-logo dropshadow-1" src="img/logoDark.webp" alt="Logo" />
-        </div>
-        <a href="#" class="sidenav-link ">Link 1</a>
-        <a href="#" class="sidenav-link">Link 2</a>
-        <a href="#" class="sidenav-link">Link 3</a>
-        <a href="#" class="sidenav-link">Link 4</a>
-        <div class="sidenav-footer cyan light-1">
-            This is a footer
-        </div>
-    </div>
-    {% block body %}{% endblock %}
+        <!-- bandeau pub-->
+        {% block body %}{% endblock %}
 
-    <script type="module" src="/js/axentix.js"></script>
+        <script type="module" src="/js/axentix.js"></script>
 
-</body>
+    </body>
 
 </html>

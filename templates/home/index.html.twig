@@ -1,6 +1,52 @@
-{% extends 'base.html.twig' %} 
-{% block title %}mobile guy{% endblock %} 
-{% block body %} 
-<h1>test</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et velit laudantium tempore aliquid commodi sit officiis assumenda veritatis necessitatibus, optio deserunt, officia sunt! Voluptatem expedita tempora maxime laboriosam eaque sapiente dolores maiores enim mollitia ratione, quo ullam corrupti ex ducimus. Id dolor ad vitae quisquam earum maiores veritatis adipisci sequi itaque laudantium. Laborum laudantium, libero beatae molestiae asperiores pariatur natus ab placeat voluptate labore veniam blanditiis, consequuntur voluptates animi? Laborum labore ullam inventore nisi ipsa vero reiciendis quae cumque qui quasi voluptas et eum ad, magnam, esse adipisci hic. Fuga, dolor harum. Distinctio aut, corrupti, ea eum molestias rerum quis possimus laudantium quia repellendus velit vero! Hic molestiae tempore adipisci molestias. Libero enim suscipit quia id ipsam porro consequuntur, magni illo dignissimos. Deleniti id possimus nobis aperiam doloremque suscipit ut similique eos magni exercitationem sequi ratione, obcaecati, numquam temporibus. Voluptatum debitis voluptatibus excepturi, ratione a eveniet dolorem maiores perferendis, laborum doloribus reiciendis quia odit laboriosam commodi nemo ullam sapiente iusto sint illo voluptatem temporibus ducimus fuga beatae. Consectetur quidem ab sapiente qui labore sunt cupiditate error pariatur alias, vero molestiae sed deserunt minima corrupti. Autem repellendus dolor esse ad eos, earum cupiditate iure, corporis accusantium cum facere, in impedit! Dolorem ipsam fugiat sed explicabo labore dignissimos corrupti praesentium, quod ducimus quo doloremque laborum ad. Suscipit sed, veritatis libero accusamus provident facilis recusandae sequi ex animi, perspiciatis unde ipsam tempora, aliquid repellat eum. Voluptates, similique consequatur odit eaque sit molestias! Ex accusamus, aperiam exercitationem quaerat beatae esse quam necessitatibus atque numquam.</p>
- {% endblock %}
+{% extends 'base.html.twig' %}
+{% block title %}
+    mobile guy
+                    
+                
+            
+        
+    
+{% endblock %}
+{% block body %}
+    <!--bandeau publicitaire-->
+    <div class="grix my-4">
+        <img src="http://lorempixel.com/1200/300/technics/PUB" alt="pub" class="responsive-media"></div>
+    </div>
+
+    <!-- new-->
+    <h2 class="txt-center bg-cyan1 txt-prune">
+        nos nouveautés
+                            
+                    
+            
+    </h2>
+    <div class="grix xs3 md4 lg5">
+
+        {% for product in products %}
+            <div class="card light-1 shadow-1 bg-cyan2">
+                <div class="card-header">
+                    <h2>
+                        {{ product.designation }}
+                    </h2>
+                    <h4>
+                        {{ product.marque }}
+                    </h4>
+                </div>
+                <div class="divider"></div>
+                <div class="card-content">
+                <p>{{product.description}}</p></div>
+                <div class="card-footer">
+                    <button class="btn circle blue press">
+                       <a href="{{path('products_show', {'id':product.id})}}"> <i class="fas fa-search"></i></a>
+                    </button>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+    {% for role in app.user.roles %}
+        <p>
+            {{ role }}
+        </p>
+    {% endfor %}
+{% endblock %}
